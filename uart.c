@@ -1,0 +1,19 @@
+#include "uart.h"
+
+void uartInitialize(void){
+	
+	SIM->SCGC4 |= SIM_SCGC4_UART0_MASK;
+	SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK;
+	PORTA->PCR[1] |= PORT_PCR_MUX(2); 
+	PORTA->PCR[2] |= PORT_PCR_MUX(2);
+	SIM->SOPT2 |= SIM_SOPT2_UART0SRC(2);
+	UART0->C2 &= !(UART_C2_RE_MASK | UART_C2_TE_MASK);
+	UART0->C4 |= UART0_C4_OSR(0b11111); //osr = 32
+	//dla br=9600, sbr=26
+	UART0->BDH |= UART_BDH_SBR(0);
+	UART0->BDL |= UART_BDL_SBR(24); //value 26, for BR=9600
+	UART0->BDH &= !UART_BDH_SBNS_MASK; //one bit stop
+	UART0->C1 &= !(UART_C1_M_MASK | UART_C1_PE_MASK);
+	UART0->C2 |= UART_C2_TE_MASK | UART_C2_RE_MASK; //enable rx and tx
+	
+}
