@@ -28,22 +28,10 @@ Project File Date:  12/16/2019
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling uart.c...
-uart.c(10): error:  #20: identifier "UART_C2_RE_MASK" is undefined
-  	UART0->C2 &= !(UART_C2_RE_MASK | UART_C2_TE_MASK);
-uart.c(10): error:  #20: identifier "UART_C2_TE_MASK" is undefined
-  	UART0->C2 &= !(UART_C2_RE_MASK | UART_C2_TE_MASK);
-uart.c(13): warning:  #223-D: function "UART_BDH_SBR" declared implicitly
-  	UART0->BDH |= UART_BDH_SBR(0);
-uart.c(14): warning:  #223-D: function "UART_BDL_SBR" declared implicitly
-  	UART0->BDL |= UART_BDL_SBR(24); //value 26, for BR=9600
-uart.c(15): error:  #20: identifier "UART_BDH_SBNS_MASK" is undefined
-  	UART0->BDH &= !UART_BDH_SBNS_MASK; //one bit stop
-uart.c(16): error:  #20: identifier "UART_C1_M_MASK" is undefined
-  	UART0->C1 &= !(UART_C1_M_MASK | UART_C1_PE_MASK);
-uart.c(16): error:  #20: identifier "UART_C1_PE_MASK" is undefined
-  	UART0->C1 &= !(UART_C1_M_MASK | UART_C1_PE_MASK);
-uart.c: 2 warnings, 5 errors
-".\Objects\freefal_detector.axf" - 5 Error(s), 2 Warning(s).
+compiling main.c...
+linking...
+Program Size: Code=600 RO-data=440 RW-data=0 ZI-data=352  
+".\Objects\freefal_detector.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -72,8 +60,7 @@ Package Vendor: Keil
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device\Source\ARM\startup_MKL05Z4.s
       Source file:   Device\Source\system_MKL05Z4.c
-Target not created.
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>
