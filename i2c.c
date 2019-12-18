@@ -20,6 +20,10 @@ void i2cInit(void){
 	I2C0->C1 |= I2C_C1_TXAK_MASK;										//Transmit Acknowledge Enable
 	I2C0->C1 |= I2C_C1_MST_MASK;										//Master Mode Select, 1-master, 0-slave
 	I2C0->A1 |= I2C_A1_AD(0x1D);										//default address of accelerator id 0x1D
+	
+	NVIC_ClearPendingIRQ(I2C0_IRQn);								//Clear NVIC any pending interrupts on I2C
+	NVIC_EnableIRQ(I2C0_IRQn);											//Enable NVIC interrupts source for I2C
+	NVIC_SetPriority (I2C0_IRQn, 0);
 }
 
 
