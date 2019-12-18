@@ -10,7 +10,6 @@ typedef struct {
 	uint8_t elements;
 }Queue;
 
-
 uint8_t q_empty(Queue *q);
 uint8_t q_full(Queue *q);
 void uartInitialize(void);
@@ -23,6 +22,3 @@ void init_RXTX_buffers(void);
 void enqueue_string(Queue *q, uint8_t *str);
 
 #endif
-
-//int add_string_cyc_buff();
-//Queue CYC_BUFF;

@@ -53,13 +53,11 @@ void UART0_IRQHandler(void){									//interrupts handler
 }
 
 void send_char(uint8_t c){										//send char to uart using polling
-	
 	while(!(UART0->S1 & UART0_S1_TDRE_MASK));
 	UART0->D = c;
 }
 
 void send_string(uint8_t *s){									//send string to uart using polling
-	
 	while (*s)
 		send_char(*s++);
 }
@@ -71,7 +69,6 @@ void init_buffer(Queue *q) {									//initialize buffer with default values, ze
 }
 
 void init_RXTX_buffers(void){									//initialize Q_TX and Q_RX buffers
-	
 	init_buffer(&Q_TX);
 	init_buffer(&Q_RX);
 }
@@ -113,10 +110,6 @@ uint8_t dequeue(Queue *q) {										//dequeue char from buffer, returns dequeue
 }
 
 void enqueue_string(Queue *q, uint8_t *str){	//send string to uart
-	
 	while(*str)
 		enqueue(q, *str++);
 }
-
-
-
