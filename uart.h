@@ -10,16 +10,17 @@ typedef struct {
 	uint8_t elements;
 }Queue;
 
-static Queue Q_TX;
-static Queue Q_RX;
+
 uint8_t q_empty(Queue *q);
 uint8_t q_full(Queue *q);
 void uartInitialize(void);
 void send_string(uint8_t s[]);
-void send_char(uint16_t c);
-void init_bufer(Queue *q);
+void send_char(uint8_t c);
+void init_buffer(Queue *q);
 uint8_t enqueue(Queue *q, uint8_t data);
-uint8_t dequeue(Queue *q, uint8_t *data);
+uint8_t dequeue(Queue *q);
+void init_RXTX_buffers(void);
+void enqueue_string(Queue *q, uint8_t *str);
 
 #endif
 
