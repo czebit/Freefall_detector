@@ -59,4 +59,3 @@ uint8_t read_one_byte(uint8_t dev, uint8_t address){
 	return data;
 }
 
-

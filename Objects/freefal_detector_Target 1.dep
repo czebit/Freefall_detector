@@ -7,7 +7,7 @@ I (C:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmI
 I (C:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h)(0x53030540)
 I (C:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include\system_MKL05Z4.h)(0x51C02128)
 I (uart.h)(0x5DFA1A41)
-F (.\i2c.c)(0x5DFA1A41)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include-IC:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DMKL05Z32xxx4-o .\objects\i2c.o --omf_browse .\objects\i2c.crf --depend .\objects\i2c.d)
+F (.\i2c.c)(0x5E149B70)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include-IC:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DMKL05Z32xxx4-o .\objects\i2c.o --omf_browse .\objects\i2c.crf --depend .\objects\i2c.d)
 I (i2c.h)(0x5DFA1D13)
 I (C:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include\MKL05Z4.h)(0x51C02128)
 I (C:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm0plus.h)(0x5368ED1C)
@@ -17,6 +17,15 @@ I (C:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmF
 I (C:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include\system_MKL05Z4.h)(0x51C02128)
 F (.\uart.c)(0x5DFA1A41)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include-IC:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DMKL05Z32xxx4-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
 I (uart.h)(0x5DFA1A41)
+I (C:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include\MKL05Z4.h)(0x51C02128)
+I (C:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm0plus.h)(0x5368ED1C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBDC52)
+I (C:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmInstr.h)(0x53030540)
+I (C:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h)(0x53030540)
+I (C:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include\system_MKL05Z4.h)(0x51C02128)
+F (.\acc.c)(0x5E149CC5)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include-IC:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DMKL05Z32xxx4-o .\objects\acc.o --omf_browse .\objects\acc.crf --depend .\objects\acc.d)
+I (acc.h)(0x5E149CC5)
+I (i2c.h)(0x5DFA1D13)
 I (C:\Users\czebi\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include\MKL05Z4.h)(0x51C02128)
 I (C:\Users\czebi\AppData\Local\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm0plus.h)(0x5368ED1C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBDC52)
