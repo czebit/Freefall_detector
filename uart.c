@@ -18,16 +18,16 @@ void uartInitialize(void){										//uart configuration and initialization
 	UART0->BDH &= !UART0_BDH_SBNS_MASK; //set one bit stop
 	UART0->C1 &= !UART0_C1_M_MASK;			//receiver and transmitter use 8-bit data
 	UART0->C1 &= !UART0_C1_PE_MASK; 		//no hardware parity generation or checking
+	
 	//interrupts configuration:
 	UART0->C2 |= UART0_C2_TIE_MASK; 		//Interrupt when Transmit Data Register is empty
 	UART0->C2 |= UART0_C2_TCIE_MASK; 		//Interrupt when transmission completes
 	UART0->C2 |= UART0_C2_RIE_MASK;	  	//Interrupt when receiver has data ready
 	UART0->C2 |= UART0_C2_TE_MASK; 			//enable transmitter
 	UART0->C2 |= UART0_C2_RE_MASK; 			//enable receiver
-	NVIC_SetPriority(UART0_IRQn, 12);
-	NVIC_ClearPendingIRQ(UART0_IRQn);
 	NVIC_EnableIRQ(UART0_IRQn);
-
+	NVIC_SetPriority(UART0_IRQn, 1);
+	NVIC_ClearPendingIRQ(UART0_IRQn);
 }
 
 void UART0_IRQHandler(void){									//interrupts handler
@@ -49,7 +49,7 @@ void UART0_IRQHandler(void){									//interrupts handler
 				// error -queue full.
 			}
 	}
-
+	NVIC_ClearPendingIRQ(UART0_IRQn);
 }
 
 void send_char(uint8_t c){										//send char to uart using polling

@@ -1,22 +1,25 @@
 #include "MKL05Z4.h"
 #include "uart.h"
+#include "i2c.h"
+#include "acc.h"
+#include "cstdio"
 
-extern Queue Q_TX;
-extern Queue Q_RX;
+extern Queue Q_TX, Q_RX;
+extern uint8_t acc_X, acc_Y, acc_Z;
+uint8_t X, Y, Z;
 
-int main(void){
+int main(void){ 
+	i2c_init();
+	init_mma();
 	init_RXTX_buffers();
-	//uint8_t data = 'a';
-	uint8_t sznurek[] = "dupa";
-	enqueue_string(&Q_TX,sznurek);
+	uint8_t hello[] = "1";
+	enqueue_string(&Q_TX, hello);
 	uartInitialize();
 	while(1)
 	{
-//		data=0x41;
-//		for(uint16_t i=0; i<10;i++){
-//			data++;
-//			enqueue(&Q_TX, data);
-//		}
-	}
+		read_full_xyz();
+		enqueue(&Q_TX, acc_X);
+		
+	}	
 
 }

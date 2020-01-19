@@ -402,6 +402,11 @@
               <FileType>1</FileType>
               <FilePath>.\acc.c</FilePath>
             </File>
+            <File>
+              <FileName>extra.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\extra.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

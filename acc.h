@@ -1,9 +1,12 @@
-#ifndef mma8451_h
-#define mma8451_h
+#ifndef acc_h
+#define acc_h
 
+#include "MKL05Z4.h"
 #include "i2c.h"
+#include "extra.h"
 
-#define MMA8451_I2C_ADDRESS 0x1D<<1 // gives 0x3A = read or 0x3B = write
+#define MMA_ADDRESS 0x1D<<1
+#define WHOAMI 0x1A
 
 #define STATUS_REG 0x00
 #define OUT_X_MSB_REG 0x01
@@ -50,7 +53,10 @@
 #define OFF_Y_REG 0x30
 #define OFF_Z_REG 0x31
 
-void acc_init(void);
-uint16_t accelRead(void);
+uint8_t init_mma(void);
+void read_full_xyz(void);
+void read_xyz(void);
+uint8_t read_X(void);
+
 
 #endif 
