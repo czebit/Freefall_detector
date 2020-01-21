@@ -10,3 +10,4 @@
 .\objects\main.o: acc.h
 .\objects\main.o: extra.h
 .\objects\main.o: TPM.h
+.\objects\main.o: leds.h

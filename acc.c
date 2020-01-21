@@ -7,21 +7,21 @@ uint8_t init_mma()
 	  //check for device if it is present
 		if(i2c_read_byte(MMA_ADDRESS, WHO_AM_I_REG) == WHOAMI){
   		delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, CTRL_REG1_REG, 0x20);
+			i2c_write_byte(MMA_ADDRESS, CTRL_REG1_REG, 0x00);
 			delay_mc(10);
 			i2c_write_byte(MMA_ADDRESS, CTRL_REG3_REG, 0x00);
 			delay_mc(10);
 			i2c_write_byte(MMA_ADDRESS, FF_MT_CFG_REG, 0x38);
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, FF_MT_THS_REG, 0x83); //ths = 0.2g, debouncer increments or clears counter
+			i2c_write_byte(MMA_ADDRESS, FF_MT_THS_REG, 0x04); //ths = 0.2g, debouncer increments or clears counter
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, FF_MT_COUNT_REG, 0x01);
+			i2c_write_byte(MMA_ADDRESS, FF_MT_COUNT_REG, 0x5A);
 			delay_mc(10);
 			i2c_write_byte(MMA_ADDRESS, CTRL_REG4_REG, 0x04); //freefall interrupt enabled
 			delay_mc(10);
 			i2c_write_byte(MMA_ADDRESS, CTRL_REG5_REG, 0x00);
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, CTRL_REG1_REG, 0x21);
+			i2c_write_byte(MMA_ADDRESS, CTRL_REG1_REG, 0x01);
 			delay_mc(10);
 			return 1;
 		}

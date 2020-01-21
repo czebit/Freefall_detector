@@ -3,6 +3,7 @@
 #include "i2c.h"
 #include "acc.h"
 #include "TPM.h"
+#include "leds.h"
 
 extern Queue Q_TX, Q_RX;
 
@@ -11,6 +12,7 @@ int main(void){
 	uartInitialize();
 	i2c_init();
 	init_mma();
+	ledsInitialize();
 	while(1)
 	{
 	}	

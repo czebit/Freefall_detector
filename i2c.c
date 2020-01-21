@@ -1,9 +1,14 @@
 #include "i2c.h"
 #include "uart.h"
 #include "TPM.h"
+#include "leds.h"
+
 uint8_t ff = 0;
-uint16_t t = 0;
-extern uint8_t n;
+int8_t h;
+int8_t l;
+float s;
+uint16_t s2;
+extern uint16_t n;
 void i2c_init(void){
 
 	SIM->SCGC4 |= SIM_SCGC4_I2C0_MASK; 							//enable clock gating for I2C
@@ -26,7 +31,7 @@ void i2c_init(void){
 	
 	NVIC_ClearPendingIRQ(PORTA_IRQn);
 	NVIC_EnableIRQ(PORTA_IRQn);
-	NVIC_SetPriority (PORTA_IRQn, 3);
+	NVIC_SetPriority (PORTA_IRQn, 1);
 }
 
 uint8_t i2c_read_byte(uint8_t dev, uint8_t address){
@@ -103,9 +108,17 @@ void PORTA_IRQHandler(void){
 		TPM0->CNT &= !TPM_CNT_COUNT_MASK;
 		n=0;
 		ff = 1;
+		ledRedOn();
 	}
 	else {
 		ff = 0;
-		send_char(n);
+		s = (float) n;
+		s = (s/100)*(s/100)*490;
+		s2 = (uint16_t) s;
+		h = (s2>>8);
+		l = s2;
+		send_char(h);
+		send_char(l);
+		ledsOff();
 	}
 }

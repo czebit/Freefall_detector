@@ -9,7 +9,7 @@ void uartInitialize(void){										//uart configuration and initialization
 	SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK; //enable portb clock gating
 	PORTB->PCR[1] |= PORT_PCR_MUX(2); 	//set PTB1 as UART0_TX
 	PORTB->PCR[2] |= PORT_PCR_MUX(2);		//set PTB2 as UART0_RX
-	SIM->SOPT2 |= SIM_SOPT2_UART0SRC(1);//set clock cource MCGIRCLK for uart 4Mhz in VLPR mode; 1 for 48mhz
+	SIM->SOPT2 |= SIM_SOPT2_UART0SRC(1);//1 for 48mhz
 	UART0->C2 &= !UART0_C2_RE_MASK;			//disable receiver for configuration
 	UART0->C2 &= !UART0_C2_TE_MASK; 		//disable transmitter for configuration
 	UART0->C4 |= UART0_C4_OSR(31); 			//osr = 31; oversampling factor = 32
