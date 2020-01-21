@@ -153,7 +153,24 @@
           <Name>UL2CM3(-S0 -C0 -P0 -FD1FFFFC00 -FC1000 -FN1 -FF0MK_P32_48MHZ -FS00 -FL08000 -FP0($$Device:MKL05Z32xxx4$Flash\MK_P32_48MHZ.FLM))</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>17</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>2042</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\freefal_detector\main.c\17</Expression>
+        </Bp>
+      </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -165,7 +182,7 @@
         <Ww>
           <count>0</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Q_TX.elements</ItemText>
+          <ItemText>Q_TX.elements,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
@@ -175,14 +192,59 @@
         <Ww>
           <count>2</count>
           <WinNumber>2</WinNumber>
-          <ItemText>X,0x0A</ItemText>
+          <ItemText>x</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>y</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>FPTA-&gt;PDIR</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>PTA-&gt;PDIR</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>FPTA-&gt;PDIR &amp; (1UL&lt;&lt;10)</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>FPTA-&gt;PDIR &amp; FGPIO_PDIR_PDI(10)</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>ff</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>z</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>x</ItemText>
+        </Ww>
+        <Ww>
+          <count>11</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>y</ItemText>
         </Ww>
       </WatchWindow2>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>q_empty</ItemText>
+          <ItemText>FPTA-&gt;PDIR</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -253,7 +315,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\i2c.c</PathWithFileName>
@@ -265,7 +327,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>3</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\uart.c</PathWithFileName>
@@ -277,7 +339,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\acc.c</PathWithFileName>
@@ -294,6 +356,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\extra.c</PathWithFileName>
       <FilenameWithoutPath>extra.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>6</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>1</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\TPM.c</PathWithFileName>
+      <FilenameWithoutPath>TPM.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

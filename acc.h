@@ -22,41 +22,19 @@
 #define WHO_AM_I_REG 0x0D
 #define XYZ_DATA_CFG_REG 0x0E
 #define HP_FILTER_CUTOFF_REG 0x0F
-#define PL_STATUS_REG 0x10
-#define PL_CFG_REG 0x11
-#define PL_COUNT_REG 0x12
-#define PL_BF_ZCOMP_REG 0x13
-#define P_L_THS_REG_REG 0x14
 #define FF_MT_CFG_REG 0x15
 #define FF_MT_SRC_REG 0x16
 #define FF_MT_THS_REG 0x17
 #define FF_MT_COUNT_REG 0x18
-#define TRANSIENT_CFG_REG 0x1D
-#define TRANSIENT_SCR_REG 0x1E
-#define TRANSIENT_THS_REG 0x1F
-#define TRANSIENT_COUNT_REG 0x20
-#define PULSE_CFG_REG 0x21
-#define PULSE_SRC_REG 0x22
-#define PULSE_THSX_REG 0x23
-#define PULSE_THSY_REG 0x24
-#define PULSE_THSZ_REG 0x25
-#define PULSE_TMLT_REG 0x26
-#define PULSE_LTCY_REG 0x27
-#define PULSE_WIND_REG 0x28
 #define ASLP_COUNT_REG 0x29
 #define CTRL_REG1_REG 0x2A
 #define CTRL_REG2_REG 0x2B
 #define CTRL_REG3_REG 0x2C
 #define CTRL_REG4_REG 0x2D
 #define CTRL_REG5_REG 0x2E
-#define OFF_X_REG 0x2F
-#define OFF_Y_REG 0x30
-#define OFF_Z_REG 0x31
 
 uint8_t init_mma(void);
-void read_full_xyz(void);
-void read_xyz(void);
-uint8_t read_X(void);
-
+void read_full_xyz(uint8_t *p_X, uint8_t *p_y, uint8_t *p_z);
+uint8_t read_x(void);
 
 #endif 
