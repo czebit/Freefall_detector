@@ -4,16 +4,21 @@
 #include "acc.h"
 #include "TPM.h"
 #include "leds.h"
-
-extern Queue Q_TX, Q_RX;
+#include "pwrmode.h"
+#include "extra.h"
 
 int main(void){ 
-	tpmInitialize();
-	uartInitialize();
-	i2c_init();
+	init_tpm();
+	init_uart();
+	init_i2c();
 	init_mma();
-	ledsInitialize();
+	init_mma_interrupts();
+	init_leds();
+	delay_mc(1000);
+	init_VLPR();
+	
 	while(1)
 	{
+		
 	}	
 }

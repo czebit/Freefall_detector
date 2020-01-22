@@ -34,7 +34,7 @@
 #define CTRL_REG5_REG 0x2E
 
 uint8_t init_mma(void);
+void init_mma_interrupts(void);
 void read_full_xyz(uint8_t *p_X, uint8_t *p_y, uint8_t *p_z);
-uint8_t read_x(void);
 
 #endif 

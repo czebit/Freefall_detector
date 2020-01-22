@@ -1,6 +1,16 @@
 #include "acc.h"
+#include "uart.h"
+#include "leds.h"
+#include "pwrmode.h"
 
 uint8_t acc_X=0, acc_Y=0, acc_Z=0;
+
+uint8_t ff = 0;
+int8_t h;
+int8_t l;
+float s;
+uint16_t s2;
+extern uint16_t n;
 
 uint8_t init_mma()
 {
@@ -28,6 +38,18 @@ uint8_t init_mma()
 		return 0;
 }
 
+void init_mma_interrupts(void){
+	
+	SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK;							//Turn on clock to Port A module
+	PORTA->PCR[INT2_PIN] |= PORT_PCR_MUX(1);				//using PTA10 as gpio
+	PORTA->PCR[INT2_PIN] |= PORT_PCR_IRQC(0b1011);	//PTA10 is configured for both edges interrupts
+	PORTA->PCR[INT2_PIN] |= PORT_PCR_ISF_MASK; 	    //Clear the interrupt flag
+	
+	NVIC_ClearPendingIRQ(PORTA_IRQn);
+	NVIC_EnableIRQ(PORTA_IRQn);
+	NVIC_SetPriority (PORTA_IRQn, 2);
+}
+
 void read_full_xyz(uint8_t *p_x, uint8_t *p_y, uint8_t *p_z)
 {
 	uint8_t i;
@@ -50,8 +72,26 @@ void read_full_xyz(uint8_t *p_x, uint8_t *p_y, uint8_t *p_z)
 	*p_x = data[4];
 }
 
-uint8_t read_x(void){
-	uint8_t x = i2c_read_byte(MMA_ADDRESS, OUT_X_MSB_REG);
-	return x;
+void PORTA_IRQHandler(void){
+	PORTA->PCR[INT2_PIN] |= PORT_PCR_ISF_MASK;
+	if (ff == 0){
+		TPM0->SC |= TPM_SC_CMOD(1);
+		TPM0->CNT &= !TPM_CNT_COUNT_MASK;
+		n=0;
+		ff = 1;
+		ledRedOn();
+	}
+	else {
+		s = (float) n;
+		TPM0->SC |= TPM_SC_CMOD(0);
+		ff = 0;
+		s = (s/100)*(s/100)*490;
+		s2 = (uint16_t) s;
+		h = (s2>>8);
+		l = s2;
+		send_char(h);
+		send_char(l);
+		ledsOff();
+		init_VLPS();
+	}
 }
-

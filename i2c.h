@@ -27,7 +27,7 @@ INT2	PTA10
 #define NACK 					I2C0->C1 |= I2C_C1_TXAK_MASK	//Acknolegement of data NOT received
 #define ACK		     	  I2C0->C1 &= ~I2C_C1_TXAK_MASK //Acknolegement of data received
 	
-void i2c_init(void);
+void init_i2c(void);
 void i2c_read_setup(uint8_t dev, uint8_t address);
 uint8_t i2c_read_mult_bytes(uint8_t isLastRead);
 uint8_t i2c_read_byte(uint8_t dev, uint8_t address);

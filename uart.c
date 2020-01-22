@@ -3,7 +3,7 @@
 Queue Q_TX;
 Queue Q_RX;
 
-void uartInitialize(void){										//uart configuration and initialization
+void init_uart(void){										//uart configuration and initialization
 	
 	SIM->SCGC4 |= SIM_SCGC4_UART0_MASK; //enable uart0 clock gating
 	SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK; //enable portb clock gating
@@ -34,15 +34,16 @@ void uartInitialize(void){										//uart configuration and initialization
 
 void UART0_IRQHandler(void){									//interrupts handler
 	NVIC_ClearPendingIRQ(UART0_IRQn);
+		
 	if (UART0->S1 & UART0_S1_TDRE_MASK){ //TDRE: Transmit data register empty
 		if(!q_empty(&Q_TX)){
 			UART0->D = dequeue(&Q_TX);
 		}
 		else{
 			UART0->C2 &= !UART0_C2_TIE_MASK;
+		//	UART0->C2 &= !UART0_C2_TE_MASK;
 		}
 	}
-
 	if (UART0->S1 & UART0_S1_RDRF_MASK){ //RDRF: Receiver data register full
 			if (!q_full(&Q_RX)){
 				enqueue(&Q_RX, UART0->D);
@@ -58,9 +59,9 @@ void send_char(uint8_t c){										//send char to uart using polling
 	UART0->D = c;
 }
 
-void send_string(uint8_t *s){									//send string to uart using polling
-	while (*s)
-		send_char(*s++);
+void send_string(uint8_t *str){								//send string to uart using interrupts
+	while(*str)
+		enqueue(&Q_TX, *str++);
 }
 
 void init_buffer(Queue *q) {									//initialize buffer with default values, zeros
@@ -90,11 +91,11 @@ uint8_t enqueue(Queue *q, uint8_t data) {			//enqueue char to buffer, returns 1 
 		if (q->head >= Q_SIZE) {
 			q->head = 0;
 		}
-		UART0->C2 |= UART0_C2_TIE_MASK;
 	}
 	if (q->head == q->tail) {
 		return 0;
 	}
+
 	return 1;
 }
 
@@ -109,9 +110,4 @@ uint8_t dequeue(Queue *q) {										//dequeue char from buffer, returns dequeue
 		}
 	}
 	return data;
-}
-
-void enqueue_string(Queue *q, uint8_t *str){	//send string to uart
-	while(*str)
-		enqueue(q, *str++);
 }

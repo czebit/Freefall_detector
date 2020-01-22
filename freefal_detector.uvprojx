@@ -417,6 +417,11 @@
               <FileType>1</FileType>
               <FilePath>.\leds.c</FilePath>
             </File>
+            <File>
+              <FileName>pwrmode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\pwrmode.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -3,6 +3,6 @@
 
 #include "MKL05Z4.h"
 
-void tpmInitialize(void);
+void init_tpm(void);
 
 #endif

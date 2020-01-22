@@ -4,7 +4,7 @@
 #include "MKL05Z4.h"
 #include "extra.h"
 
-void ledsInitialize(void);
+void init_leds(void);
 
 void ledRedOn (void);
 void ledGreenOn (void);

@@ -6,7 +6,3 @@
 .\objects\i2c.o: D:\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmInstr.h
 .\objects\i2c.o: D:\Arm\Packs\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h
 .\objects\i2c.o: D:\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include\system_MKL05Z4.h
-.\objects\i2c.o: uart.h
-.\objects\i2c.o: TPM.h
-.\objects\i2c.o: leds.h
-.\objects\i2c.o: extra.h

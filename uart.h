@@ -12,13 +12,12 @@ typedef struct {
 
 uint8_t q_empty(Queue *q);
 uint8_t q_full(Queue *q);
-void uartInitialize(void);
+void init_uart(void);
 void send_string(uint8_t s[]);
 void send_char(uint8_t c);
 void init_buffer(Queue *q);
 uint8_t enqueue(Queue *q, uint8_t data);
 uint8_t dequeue(Queue *q);
 void init_RXTX_buffers(void);
-void enqueue_string(Queue *q, uint8_t *str);
 
 #endif

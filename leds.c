@@ -4,7 +4,7 @@ const uint32_t red_mask = 1UL<<8;				//PTB8
 const uint32_t green_mask = 1UL<<9;			//PTB9 
 const uint32_t blue_mask = 1UL<<10;			//PTB10
 
-void ledsInitialize(void){
+void init_leds(void){
 	
 	//Initialize registers	
   SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK;

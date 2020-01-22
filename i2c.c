@@ -1,26 +1,13 @@
 #include "i2c.h"
-#include "uart.h"
-#include "TPM.h"
-#include "leds.h"
 
-uint8_t ff = 0;
-int8_t h;
-int8_t l;
-float s;
-uint16_t s2;
-extern uint16_t n;
-void i2c_init(void){
+
+void init_i2c(void){
 
 	SIM->SCGC4 |= SIM_SCGC4_I2C0_MASK; 							//enable clock gating for I2C
 	SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK;					 		//enlable clock gating for PORTB
-	SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK;							//Turn on clock to Port A module
 	
 	PORTB->PCR[SCL_PIN] |= PORT_PCR_MUX(2);					//using PTB3 as i2c_scl
 	PORTB->PCR[SDA_PIN] |= PORT_PCR_MUX(2);					//using PTB4 as i2c_sda
-	
-	PORTA->PCR[INT2_PIN] |= PORT_PCR_MUX(1);				//using PTA10 as gpio
-	PORTA->PCR[INT2_PIN] |= PORT_PCR_IRQC(0b1011);	//PTA10 is configured for both edges interrupts
-	PORTA->PCR[INT2_PIN] |= PORT_PCR_ISF_MASK; 	    //Clear the interrupt flag
 	
 //	I2C0->C2 |= I2C_C2_HDRS_MASK;
 	//baud = bus freq/(scl_div+mul)
@@ -28,10 +15,6 @@ void i2c_init(void){
  	I2C0->F = (I2C_F_ICR(14));
 //	I2C0->F = (I2C_F_ICR(0x14) | I2C_F_MULT(1));
 	I2C0->C1 |= (I2C_C1_IICEN_MASK );
-	
-	NVIC_ClearPendingIRQ(PORTA_IRQn);
-	NVIC_EnableIRQ(PORTA_IRQn);
-	NVIC_SetPriority (PORTA_IRQn, 1);
 }
 
 uint8_t i2c_read_byte(uint8_t dev, uint8_t address){
@@ -100,25 +83,4 @@ void i2c_write_byte(uint8_t dev, uint8_t address, uint8_t data){
 		I2C_WAIT;											/*wait for ack*/
 		I2C_M_STOP;										/*send Stop*/
 	
-}
-
-void PORTA_IRQHandler(void){
-	PORTA->PCR[INT2_PIN] |= PORT_PCR_ISF_MASK;
-	if (ff == 0){
-		TPM0->CNT &= !TPM_CNT_COUNT_MASK;
-		n=0;
-		ff = 1;
-		ledRedOn();
-	}
-	else {
-		ff = 0;
-		s = (float) n;
-		s = (s/100)*(s/100)*490;
-		s2 = (uint16_t) s;
-		h = (s2>>8);
-		l = s2;
-		send_char(h);
-		send_char(l);
-		ledsOff();
-	}
 }

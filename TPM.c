@@ -2,7 +2,7 @@
 
 uint16_t n=0;
 
-void tpmInitialize(void){
+void init_tpm(void){
 	
 	SIM->SCGC6 |= SIM_SCGC6_TPM0_MASK; 						//clock enable for tmp0
 	SIM->SOPT2 |= SIM_SOPT2_TPMSRC(3);						//clock source choosen MCGIRC

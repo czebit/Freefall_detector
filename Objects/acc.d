@@ -8,3 +8,6 @@
 .\objects\acc.o: D:\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include\system_MKL05Z4.h
 .\objects\acc.o: i2c.h
 .\objects\acc.o: extra.h
+.\objects\acc.o: uart.h
+.\objects\acc.o: leds.h
+.\objects\acc.o: pwrmode.h
