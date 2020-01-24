@@ -1,6 +1,6 @@
 #ifndef uart_h
 #define uart_h
-#define Q_SIZE 64
+#define Q_SIZE 32
 #include "MKL05Z4.h" 
 
 typedef struct {

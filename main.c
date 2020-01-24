@@ -14,11 +14,11 @@ int main(void){
 	init_mma();
 	init_mma_interrupts();
 	init_leds();
-	delay_mc(1000);
+	delay_mc(10);
+
 	init_VLPR();
-	
 	while(1)
 	{
-		
+		__wfi(); //wait for interrupt
 	}	
 }

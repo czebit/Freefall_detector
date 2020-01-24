@@ -17,7 +17,8 @@ void init_i2c(void){
 	I2C0->C1 |= (I2C_C1_IICEN_MASK );
 }
 
-uint8_t i2c_read_byte(uint8_t dev, uint8_t address){
+// read one byte from device "dev" from register with address "address"
+uint8_t i2c_read_byte(uint8_t dev, uint8_t address){ 
 	uint8_t data;
 	I2C_TRAN;							/*set to transmit mode */
 	I2C_M_START;					/*send start*/
@@ -73,8 +74,8 @@ uint8_t i2c_read_mult_bytes(uint8_t isLastRead){
 //using 7bit addressing writes a byte data to dev:address
 void i2c_write_byte(uint8_t dev, uint8_t address, uint8_t data){
 	
-		I2C_TRAN;							/*set to transmit mode */
-		I2C_M_START;					/*send start*/
+		I2C_TRAN;											/*set to transmit mode */
+		I2C_M_START;									/*send start*/
 		I2C0->D = dev;								/*send dev address	*/
 		I2C_WAIT;											/*wait for ack */	
 		I2C0->D = address;						/*send write address	*/

@@ -5,33 +5,30 @@
 
 uint8_t acc_X=0, acc_Y=0, acc_Z=0;
 
-uint8_t ff = 0;
+int8_t ff = 0;
 int8_t h;
 int8_t l;
+uint8_t val[2];
 float s;
 uint16_t s2;
 extern uint16_t n;
 
 uint8_t init_mma()
 {
-	  //check for device if it is present
-		if(i2c_read_byte(MMA_ADDRESS, WHO_AM_I_REG) == WHOAMI){
+	  
+		if(i2c_read_byte(MMA_ADDRESS, WHO_AM_I_REG) == WHOAMI){ //check for device if it is present
   		delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, CTRL_REG1_REG, 0x00);
+			i2c_write_byte(MMA_ADDRESS, CTRL_REG1_REG, 0x00);			//turn on standby mode
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, CTRL_REG3_REG, 0x00);
+			i2c_write_byte(MMA_ADDRESS, FF_MT_CFG_REG, 0x38); 		//set freefal detection mode on XYZ axis
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, FF_MT_CFG_REG, 0x38);
+			i2c_write_byte(MMA_ADDRESS, FF_MT_THS_REG, 0x04); 		//treshold = 0.2g, debouncer increments or clears counter
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, FF_MT_THS_REG, 0x04); //ths = 0.2g, debouncer increments or clears counter
+			i2c_write_byte(MMA_ADDRESS, FF_MT_COUNT_REG, 0x5A);		//counter for debounce
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, FF_MT_COUNT_REG, 0x5A);
+			i2c_write_byte(MMA_ADDRESS, CTRL_REG4_REG, 0x04);			//freefall interrupt enabled
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, CTRL_REG4_REG, 0x04); //freefall interrupt enabled
-			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, CTRL_REG5_REG, 0x00);
-			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, CTRL_REG1_REG, 0x01);
+			i2c_write_byte(MMA_ADDRESS, CTRL_REG1_REG, 0x01);			//turn on active mode
 			delay_mc(10);
 			return 1;
 		}
@@ -47,7 +44,7 @@ void init_mma_interrupts(void){
 	
 	NVIC_ClearPendingIRQ(PORTA_IRQn);
 	NVIC_EnableIRQ(PORTA_IRQn);
-	NVIC_SetPriority (PORTA_IRQn, 2);
+	NVIC_SetPriority(PORTA_IRQn, 2);
 }
 
 void read_full_xyz(uint8_t *p_x, uint8_t *p_y, uint8_t *p_z)
@@ -66,17 +63,17 @@ void read_full_xyz(uint8_t *p_x, uint8_t *p_y, uint8_t *p_z)
 	}
 // Read last byte ending repeated read_mode
 	data[i] = i2c_read_mult_bytes(1);
-
-	*p_y = data[0];
-	*p_z = data[2];
-	*p_x = data[4];
+	
+	*p_x = data[0];
+	*p_y = data[2];
+	*p_z = data[4];
 }
 
 void PORTA_IRQHandler(void){
+//	exit_VLPR();
 	PORTA->PCR[INT2_PIN] |= PORT_PCR_ISF_MASK;
 	if (ff == 0){
 		TPM0->SC |= TPM_SC_CMOD(1);
-		TPM0->CNT &= !TPM_CNT_COUNT_MASK;
 		n=0;
 		ff = 1;
 		ledRedOn();
@@ -92,6 +89,6 @@ void PORTA_IRQHandler(void){
 		send_char(h);
 		send_char(l);
 		ledsOff();
-		init_VLPS();
+//		init_VLPR();
 	}
 }

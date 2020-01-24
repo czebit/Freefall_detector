@@ -5,5 +5,6 @@
 
 void init_VLPR(void);
 void init_VLPS(void);
+void exit_VLPR(void);
 
 #endif
