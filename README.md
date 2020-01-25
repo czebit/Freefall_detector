@@ -1,7 +1,7 @@
 # Freefall_detector
 
 
-Projekt na przedmiot Systemy Mikroprocesorowe
+Projekt na przedmiot Systemy Mikroprocesorowe.
 Prowadzący laboratoria: mgr inż. Sebastian Koryciak
 
 
