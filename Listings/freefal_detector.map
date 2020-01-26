@@ -389,10 +389,10 @@ Image Symbol Table
     .constdata                               0x00000d60   Section       64  fdiv.o(.constdata)
     x$fpl$usenofp                            0x00000d60   Section        0  usenofp.o(x$fpl$usenofp)
     fdiv_tab                                 0x00000d60   Data          64  fdiv.o(.constdata)
-    .data                                    0x1ffffc00   Section       14  acc.o(.data)
-    .data                                    0x1ffffc0e   Section        2  tpm.o(.data)
-    .bss                                     0x1ffffc10   Section       70  uart.o(.bss)
-    .bss                                     0x1ffffc58   Section       96  libspace.o(.bss)
+    .data                                    0x1ffffc00   Section       10  acc.o(.data)
+    .data                                    0x1ffffc0a   Section        2  tpm.o(.data)
+    .bss                                     0x1ffffc0c   Section       70  uart.o(.bss)
+    .bss                                     0x1ffffc54   Section       96  libspace.o(.bss)
     HEAP                                     0x1ffffcb8   Section        0  startup_mkl05z4.o(HEAP)
     STACK                                    0x1ffffcb8   Section      256  startup_mkl05z4.o(STACK)
     Heap_Mem                                 0x1ffffcb8   Data           0  startup_mkl05z4.o(HEAP)
@@ -572,20 +572,16 @@ Image Symbol Table
     __I$use$fp                               0x00000d60   Number         0  usenofp.o(x$fpl$usenofp)
     Region$$Table$$Base                      0x00000da0   Number         0  anon$$obj.o(Region$$Table)
     Region$$Table$$Limit                     0x00000dc0   Number         0  anon$$obj.o(Region$$Table)
-    acc_X                                    0x1ffffc00   Data           1  acc.o(.data)
-    acc_Y                                    0x1ffffc01   Data           1  acc.o(.data)
-    acc_Z                                    0x1ffffc02   Data           1  acc.o(.data)
-    ff                                       0x1ffffc03   Data           1  acc.o(.data)
-    h                                        0x1ffffc04   Data           1  acc.o(.data)
-    l                                        0x1ffffc05   Data           1  acc.o(.data)
-    val                                      0x1ffffc06   Data           2  acc.o(.data)
-    s                                        0x1ffffc08   Data           4  acc.o(.data)
-    s2                                       0x1ffffc0c   Data           2  acc.o(.data)
-    n                                        0x1ffffc0e   Data           2  tpm.o(.data)
-    Q_TX                                     0x1ffffc10   Data          35  uart.o(.bss)
-    Q_RX                                     0x1ffffc33   Data          35  uart.o(.bss)
-    __libspace_start                         0x1ffffc58   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x1ffffcb8   Data           0  libspace.o(.bss)
+    ff                                       0x1ffffc00   Data           1  acc.o(.data)
+    h                                        0x1ffffc01   Data           1  acc.o(.data)
+    l                                        0x1ffffc02   Data           1  acc.o(.data)
+    s                                        0x1ffffc04   Data           4  acc.o(.data)
+    s2                                       0x1ffffc08   Data           2  acc.o(.data)
+    n                                        0x1ffffc0a   Data           2  tpm.o(.data)
+    Q_TX                                     0x1ffffc0c   Data          35  uart.o(.bss)
+    Q_RX                                     0x1ffffc2f   Data          35  uart.o(.bss)
+    __libspace_start                         0x1ffffc54   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x1ffffcb4   Data           0  libspace.o(.bss)
 
 
 
@@ -595,7 +591,7 @@ Memory Map of the image
 
   Image Entry point : 0x00000165
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000dd0, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000dcc, Max: 0xffffffff, ABSOLUTE)
 
     Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000dc0, Max: 0xffffffff, ABSOLUTE)
 
@@ -696,21 +692,22 @@ Memory Map of the image
     0x00000da0   0x00000da0   0x00000020   Data   RO          605    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffffc00, Load base: 0x00000dc0, Size: 0x00000010, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x1ffffc00, Load base: 0x00000dc0, Size: 0x0000000c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffffc00   0x00000dc0   0x0000000e   Data   RW          205    .data               acc.o
-    0x1ffffc0e   0x00000dce   0x00000002   Data   RW          269    .data               tpm.o
+    0x1ffffc00   0x00000dc0   0x0000000a   Data   RW          205    .data               acc.o
+    0x1ffffc0a   0x00000dca   0x00000002   Data   RW          269    .data               tpm.o
 
 
-    Execution Region ER_ZI (Exec base: 0x1ffffc10, Load base: 0x00000dd0, Size: 0x000001a8, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x1ffffc0c, Load base: 0x00000dcc, Size: 0x000001ac, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffffc10        -       0x00000046   Zero   RW          122    .bss                uart.o
-    0x1ffffc56   0x00000dd0   0x00000002   PAD
-    0x1ffffc58        -       0x00000060   Zero   RW          478    .bss                c_p.l(libspace.o)
+    0x1ffffc0c        -       0x00000046   Zero   RW          122    .bss                uart.o
+    0x1ffffc52   0x00000dcc   0x00000002   PAD
+    0x1ffffc54        -       0x00000060   Zero   RW          478    .bss                c_p.l(libspace.o)
+    0x1ffffcb4   0x00000dcc   0x00000004   PAD
     0x1ffffcb8        -       0x00000000   Zero   RW          377    HEAP                startup_mkl05z4.o
     0x1ffffcb8        -       0x00000100   Zero   RW          376    STACK               startup_mkl05z4.o
 
@@ -722,7 +719,7 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       568         68          0         14          0       2704   acc.o
+       568         68          0         10          0       2594   acc.o
         28          4          0          0          0        423   extra.o
        420         22          0          0          0       1432   i2c.o
        140         24          0          0          0       1049   leds.o
@@ -731,10 +728,10 @@ Image component sizes
         68         38        192          0        256        800   startup_mkl05z4.o
        124         12          0          0          0        469   system_mkl05z4.o
        188         32          0          2          0       7161   tpm.o
-       656         60          0          0         70      11048   uart.o
+       656         60          0          0         70      11052   uart.o
 
     ----------------------------------------------------------------------
-      2290        268        224         16        328     106381   Object Totals
+      2290        268        224         12        328     106275   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          0          0          2          0   (incl. Padding)
 
@@ -769,8 +766,8 @@ Image component sizes
          0          0          0          0          0          0   usenofp.o
 
     ----------------------------------------------------------------------
-       942         30         64          0         96        872   Library Totals
-         6          0          0          0          0          0   (incl. Padding)
+       942         30         64          0        100        872   Library Totals
+         6          0          0          0          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -780,7 +777,7 @@ Image component sizes
        670         14         64          0          0        324   fz_ps.l
 
     ----------------------------------------------------------------------
-       942         30         64          0         96        872   Library Totals
+       942         30         64          0        100        872   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -789,15 +786,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3232        298        288         16        424     105877   Grand Totals
-      3232        298        288         16        424     105877   ELF Image Totals
-      3232        298        288         16          0          0   ROM Totals
+      3232        298        288         12        428     105771   Grand Totals
+      3232        298        288         12        428     105771   ELF Image Totals
+      3232        298        288         12          0          0   ROM Totals
 
 ==============================================================================
 
     Total RO  Size (Code + RO Data)                 3520 (   3.44kB)
     Total RW  Size (RW Data + ZI Data)               440 (   0.43kB)
-    Total ROM Size (Code + RO Data + RW Data)       3536 (   3.45kB)
+    Total ROM Size (Code + RO Data + RW Data)       3532 (   3.45kB)
 
 ==============================================================================
 

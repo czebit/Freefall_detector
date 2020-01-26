@@ -3,15 +3,13 @@
 #include "leds.h"
 #include "pwrmode.h"
 
-uint8_t acc_X=0, acc_Y=0, acc_Z=0;
 
-int8_t ff = 0;
-int8_t h;
-int8_t l;
-uint8_t val[2];
-float s;
-uint16_t s2;
-extern uint16_t n;
+volatile int8_t ff = 0;
+volatile int8_t h;
+volatile int8_t l;
+volatile float s;
+volatile uint16_t s2;
+volatile extern uint16_t n;
 
 uint8_t init_mma()
 {
@@ -22,9 +20,9 @@ uint8_t init_mma()
 			delay_mc(10);
 			i2c_write_byte(MMA_ADDRESS, FF_MT_CFG_REG, 0x38); 		//set freefal detection mode on XYZ axis
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, FF_MT_THS_REG, 0x04); 		//treshold = 0.2g, debouncer increments or clears counter
+			i2c_write_byte(MMA_ADDRESS, FF_MT_THS_REG, 0x06); 		//treshold = 0.2g, debouncer increments or clears counter
 			delay_mc(10);
-			i2c_write_byte(MMA_ADDRESS, FF_MT_COUNT_REG, 0x5A);		//counter for debounce
+			i2c_write_byte(MMA_ADDRESS, FF_MT_COUNT_REG, 0x5F);		//counter for debounce
 			delay_mc(10);
 			i2c_write_byte(MMA_ADDRESS, CTRL_REG4_REG, 0x04);			//freefall interrupt enabled
 			delay_mc(10);
@@ -70,7 +68,6 @@ void read_full_xyz(uint8_t *p_x, uint8_t *p_y, uint8_t *p_z)
 }
 
 void PORTA_IRQHandler(void){
-//	exit_VLPR();
 	PORTA->PCR[INT2_PIN] |= PORT_PCR_ISF_MASK;
 	if (ff == 0){
 		TPM0->SC |= TPM_SC_CMOD(1);
@@ -89,6 +86,5 @@ void PORTA_IRQHandler(void){
 		send_char(h);
 		send_char(l);
 		ledsOff();
-//		init_VLPR();
 	}
 }

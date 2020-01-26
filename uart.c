@@ -1,7 +1,7 @@
 #include "uart.h"
 
-Queue Q_TX;
-Queue Q_RX;
+volatile Queue Q_TX;
+volatile Queue Q_RX;
 
 void init_uart(void){										//uart configuration and initialization
 	
