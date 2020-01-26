@@ -14,3 +14,5 @@ Akcelerometr ma skonfigurowane przerwanie w momencie wystąpienia warunków spad
 
 
 Mikrokontroler działa w trybie Very Low Power Run (VLPR), czyli większość jego peryferiów jest aktywna, lecz częstotliwości zegarów są zmniejszone w celu obniżenia zużycia energii. Oprócz tego w celu optymalizacji zużycia energii, jedyna funkcja w głównej pętli programu to __wfi() wait for interrupt.
+
+[![Alt text](https://img.youtube.com/vi/wpuqIMKy0Io/0.jpg)](https://youtu.be/wpuqIMKy0Io)
